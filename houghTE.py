@@ -68,7 +68,7 @@ edges = cv2.Canny(gray,10,100)
 lines = cv2.HoughLines(edges,1,np.pi/190,houghPa)
 L_horizontal=[] ## list of almost horizontal lines in form (a,b,c) of ax+by=c
 L_vertical=[] ## list of almost vertical lines in form (a,b,c) of ax+by=c
-for rho,theta in lines[:,0]: 
+for rho,theta in lines[0]: 
     a = np.cos(theta)
     b = np.sin(theta)
     x0 = a*rho
@@ -121,3 +121,4 @@ coeffs = find_coeffs(
         [(x2,y2), (x3,y3), (x4,y4), (x1,y1)])
 img0.transform((1024,600), Image.PERSPECTIVE, coeffs,
         Image.BICUBIC).save("test1111.bmp")
+
